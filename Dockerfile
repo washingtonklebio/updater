@@ -23,3 +23,10 @@ RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - && \
 
 # Limpar cache
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
+
+COPY docker-entrypoint.sh /usr/local/bin/
+
+RUN chmod 777 /usr/local/bin/docker-entrypoint.sh \
+    && ln -s /usr/local/bin/docker-entrypoint.sh /
+
+ENTRYPOINT ["docker-entrypoint.sh"]
