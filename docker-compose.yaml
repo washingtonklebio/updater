@@ -9,6 +9,16 @@ services:
       - ./:/usr/share/nginx
     networks: 
       - app-network
+    depends_on:
+      - "mysql-app"
+      
+  redis-app:
+    image: redis
+    command: redis-server --requirepass upd@ter2019
+    ports:
+      - "6379:6379"
+    networks: 
+      - app-network
 
   mysql-app:
     image: mysql:8.0
