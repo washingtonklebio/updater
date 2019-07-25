@@ -23,7 +23,7 @@ services:
   mysql-app:
     image: mysql:8.0
     ports: 
-      - "3336:3306"
+      - "3306:3306"
     restart: always
     command: --default-authentication-plugin=mysql_native_password
     volumes:
@@ -33,6 +33,7 @@ services:
       MYSQL_ROOT_PASSWORD: 1q2w3e4r
     networks: 
       - app-network
+
 networks: 
   app-network:
     driver: bridge
