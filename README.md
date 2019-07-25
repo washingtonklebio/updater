@@ -9,22 +9,25 @@ Instalação:
 Na raiz do projeto executa os seguintes comandos separadamente:
 
 1º - composer install
+
 2º - npm install
 
 - Crie o arquivo .env
+
 cp .env.example .env
 
 Obs: configure o arquivo .env de acodo com os dados do arquivo [docker-compose.yaml]
 
 3º docker-compose up -d --build
 
-Ao finalizar entre na máquina que possui a imagem [updater_updater-app].
+Ao finalizar entre no container que possui a imagem [updater_updater-app].
 
-docker exec -ti <nome imagem> bash
+docker exec -ti nome_do_container bash
 
 4º php artisan key:generate
 
 5º php artisan migrate
 
-Encerrar as máquinas:
+Encerrar as containers:
+
 docker-compose down
