@@ -29,4 +29,4 @@ cd $APP_DIR
 echo "Gerando migrate do bando..."
 php artisan migrate
 
-exec $@
+docker-entrypoint $@

@@ -24,9 +24,12 @@ RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - && \
 # Limpar cache
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
-COPY docker-entrypoint.sh /usr/local/bin/
+# Adicionando arquivo de configuração do nginx no container
+ADD ./configs/nginx.conf /etc/nginx/conf.d/default.conf
 
-RUN chmod 777 /usr/local/bin/docker-entrypoint.sh \
-    && ln -s /usr/local/bin/docker-entrypoint.sh /
+# Configuração de logs para acessar através do docker logs, podemos usar o comando docker logs id_ou_apelido_do_container
+RUN ln -sf /dev/stdout /var/log/nginx/access.log
+RUN ln -sf /dev/stderr /var/log/nginx/error.log
 
-ENTRYPOINT ["docker-entrypoint.sh"]
+# Porta que o container será acessível
+EXPOSE 8080
