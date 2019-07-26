@@ -25,7 +25,7 @@ RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - && \
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Adicionando arquivo de configuração do nginx no container
-ADD ./configs/nginx.conf /etc/nginx/conf.d/default.conf
+ADD ./config/nginx/nginx.conf /etc/nginx/conf.d/default.conf
 
 # Configuração de logs para acessar através do docker logs, podemos usar o comando docker logs id_ou_apelido_do_container
 RUN ln -sf /dev/stdout /var/log/nginx/access.log
