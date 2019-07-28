@@ -9,11 +9,11 @@ aplicação.
 
 ### Linux
 
-`` `
+```
 git
 docker
 docker-containe
-`` `
+```
 
 ## Instalação:
 
