@@ -36,7 +36,7 @@ docker-compose up -d --build
 docker exec -ti updater_updater-app_1 bash
 ```
 
->> Dentro do container principal execute os seguintes comandos: <<
+> Dentro do container principal execute os seguintes comandos:
 
 #### Cria o arquivo .env
 ```sh
