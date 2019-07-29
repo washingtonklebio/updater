@@ -31,5 +31,10 @@ ADD ./config/nginx/nginx.conf /etc/nginx/conf.d/default.conf
 RUN ln -sf /dev/stdout /var/log/nginx/access.log
 RUN ln -sf /dev/stderr /var/log/nginx/error.log
 
+COPY ./docker-entrypoint.sh /usr/bin
+RUN chmod +x /usr/bin/docker-entrypoint.sh
+
+ENTRYPOINT [ "/usr/bin/docker-entrypoint.sh" ]
+
 # Porta que o container será acessível
 EXPOSE 8080

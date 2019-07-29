@@ -5,6 +5,7 @@ services:
     build: .
     ports: 
       - "8080:80"
+    tty: true
     volumes:
       - ./:/usr/share/nginx
     networks: 
