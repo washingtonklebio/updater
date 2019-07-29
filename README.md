@@ -1,33 +1,70 @@
 # Updater
+> Sistema de controle de versões
 
 Updater é um software gratuito capaz de gerênciar pequenos ou grandes projetos, fornecendo 
 suporte a instalação, documentação e todo o controle de versionamento necessário para uma 
 aplicação.
 
-Instalação:
+## Pré-requitos
 
-Na raiz do projeto executa os seguintes comandos separadamente:
+### Linux
 
-1º - composer install
+```
+git
+docker
+docker-containe
+```
 
-2º - npm install
+## Instalação:
 
-- Crie o arquivo .env
+### Linux
 
+#### Clona o projeto Updater
+```sh
+cd /home/user_name
+git clone https://github.com/washingtonklebio/updater.git
+cd updater
+```
+
+#### Cria e inicia os containers
+```sh
+docker-compose up -d --build
+```
+
+#### Ao finalizar entre no container principal do projeto [updater_updater-app_1]
+```sh
+docker exec -ti updater_updater-app_1 bash
+```
+
+> Dentro do container principal execute os seguintes comandos:
+
+#### Cria o arquivo .env
+```sh
 cp .env.example .env
+```
+_(Obs: configure o arquivo .env de acodo com os dados do arquivo [docker-compose.yaml])_
 
-Obs: configure o arquivo .env de acodo com os dados do arquivo [docker-compose.yaml]
+#### Instala o projeto
+```sh
+composer install
+npm install
+php artisan key:generate
+php artisan migrate
+```
 
-3º docker-compose up -d --build
+#### Ajusta as permissões
+```sh
+chmod 646 -R storage/logs/
+chmod 647 -R storage/framework/sessions/
+chmod 647 -R storage/framework/views/
+```
 
-Ao finalizar entre no container que possui a imagem [updater_updater-app].
+# Comandos 'docker-composer'
+```sh
+docker-compose up          // Cria e inicia os containers
+docker-compose down        // Para e remove os containers, networks, images, e volumes
 
-docker exec -ti nome_do_container bash
-
-4º php artisan key:generate
-
-5º php artisan migrate
-
-Encerrar as containers:
-
-docker-compose down
+docker-compose start       // Inicia serviços
+docker-compose restart     // Reinicia serviços
+docker-compose stop        // Para serviços
+```
