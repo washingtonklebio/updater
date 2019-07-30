@@ -57,6 +57,7 @@ php artisan migrate
 chmod 646 -R storage/logs/
 chmod 647 -R storage/framework/sessions/
 chmod 647 -R storage/framework/views/
+chmod 647 -R storage/framework/cache/
 ```
 
 # Comandos 'docker-composer'
