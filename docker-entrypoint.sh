@@ -25,10 +25,13 @@ chmod 647 -R storage/framework/sessions/
 chmod 647 -R storage/framework/views/
 
 echo "Aguarde a iniciação da migração do banco de dados..."
-sleep 120
+sleep 100
 
 echo "Gerando migrate da aplicação..."
 php artisan migrate
+
+echo "Gerando seeds da aplicação..."
+php artisan db:seed
 
 # Update nginx to match worker_processes to no. of cpu's
 procs=$(cat /proc/cpuinfo |grep processor | wc -l)
