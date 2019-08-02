@@ -14,6 +14,7 @@ npm run prod > /dev/null
 echo "Instalando vuetify e suas dependências..."
 npm install vuetify --save
 npm install @mdi/font -D
+npm install material-design-icons-iconfont -D
 
 echo "Gerando chave da aplicação..."
 php artisan key:generate

@@ -12,14 +12,6 @@ services:
     depends_on:
       - "mysql-app"
       
-  redis-app:
-    image: redis
-    command: redis-server --requirepass upd@ter2019
-    ports:
-      - "6379:6379"
-    networks: 
-      - app-network
-
   mysql-app:
     image: mysql:8.0
     ports: 
@@ -31,6 +23,14 @@ services:
     environment:
       MYSQL_DATABASE: updater
       MYSQL_ROOT_PASSWORD: 1q2w3e4r
+    networks: 
+      - app-network
+ 
+  redis-app:
+    image: redis
+    command: redis-server --requirepass upd@ter2019
+    ports:
+      - "6379:6379"
     networks: 
       - app-network
 
